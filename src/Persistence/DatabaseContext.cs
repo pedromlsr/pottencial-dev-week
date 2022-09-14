@@ -14,16 +14,16 @@ public class DatabaseContext : DbContext {
 
     protected override void OnModelCreating(ModelBuilder builder) {
         builder.Entity<Pessoa>(tabela => {
-            tabela.HasKey(e => e.Id);
+            tabela.HasKey(e => e.IdPessoa);
             tabela
-                .HasMany(e => e.contratos)
+                .HasMany(e => e.Contratos)
                 .WithOne()
                 .HasForeignKey(c => c.PessoaId)
             ;
         });
         
         builder.Entity<Contrato>(tabela => {
-            tabela.HasKey(e => e.Id);
+            tabela.HasKey(e => e.IdContrato);
         });
     }
 }
